@@ -2,6 +2,17 @@ const Gameboard = (() => {
   // Initialize Tic Tac Toe DOM Elements
   const gameDiv = document.querySelector(".gameDiv");
   const result = document.querySelector(".result");
+
+  let box1;
+  let box2;
+  let box3;
+  let box4;
+  let box5;
+  let box6;
+  let box7;
+  let box8;
+  let box9;
+
   // Initialize Player One
   const playerOne = {
     marker: "x",
@@ -26,7 +37,7 @@ const Gameboard = (() => {
     for (let i = 0; i <= gameboard.length; i++) {
       switch (i) {
         case 0:
-          let box1 = document.createElement("div");
+          box1 = document.createElement("div");
           box1.setAttribute("class", "box boxOne");
           box1.textContent = gameboard[i];
           box1.addEventListener("click", (e) => {
@@ -36,7 +47,7 @@ const Gameboard = (() => {
           firstRow.appendChild(box1);
           break;
         case 1:
-          let box2 = document.createElement("div");
+          box2 = document.createElement("div");
           box2.setAttribute("class", "box boxTwo");
           box2.textContent = gameboard[i];
           box2.addEventListener("click", (e) => {
@@ -46,7 +57,7 @@ const Gameboard = (() => {
           firstRow.appendChild(box2);
           break;
         case 2:
-          let box3 = document.createElement("div");
+          box3 = document.createElement("div");
           box3.setAttribute("class", "box boxThree");
           box3.textContent = gameboard[i];
           box3.addEventListener("click", (e) => {
@@ -56,7 +67,7 @@ const Gameboard = (() => {
           firstRow.appendChild(box3);
           break;
         case 3:
-          let box4 = document.createElement("div");
+          box4 = document.createElement("div");
           box4.setAttribute("class", "box boxFour");
           box4.textContent = gameboard[i];
           box4.addEventListener("click", (e) => {
@@ -66,7 +77,7 @@ const Gameboard = (() => {
           secondRow.appendChild(box4);
           break;
         case 4:
-          let box5 = document.createElement("div");
+          box5 = document.createElement("div");
           box5.setAttribute("class", "box boxFive");
           box5.textContent = gameboard[i];
           box5.addEventListener("click", (e) => {
@@ -76,7 +87,7 @@ const Gameboard = (() => {
           secondRow.appendChild(box5);
           break;
         case 5:
-          let box6 = document.createElement("div");
+          box6 = document.createElement("div");
           box6.setAttribute("class", "box boxSix");
           box6.textContent = gameboard[i];
           box6.addEventListener("click", (e) => {
@@ -86,7 +97,7 @@ const Gameboard = (() => {
           secondRow.appendChild(box6);
           break;
         case 6:
-          let box7 = document.createElement("div");
+          box7 = document.createElement("div");
           box7.setAttribute("class", "box boxSeven");
           box7.textContent = gameboard[i];
           box7.addEventListener("click", (e) => {
@@ -96,7 +107,7 @@ const Gameboard = (() => {
           thirdRow.appendChild(box7);
           break;
         case 7:
-          let box8 = document.createElement("div");
+          box8 = document.createElement("div");
           box8.setAttribute("class", "box boxEight");
           box8.textContent = gameboard[i];
           box8.addEventListener("click", (e) => {
@@ -106,7 +117,7 @@ const Gameboard = (() => {
           thirdRow.appendChild(box8);
           break;
         case 8:
-          let box9 = document.createElement("div");
+          box9 = document.createElement("div");
           box9.setAttribute("class", "box boxNine");
           box9.textContent = gameboard[i];
           box9.addEventListener("click", (e) => {
@@ -122,14 +133,12 @@ const Gameboard = (() => {
     gameDiv.appendChild(thirdRow);
   };
   const resetGameboard = () => {
-    setTimeout(function () {
-      gameDiv.innerHTML = "";
-      result.textContent = "";
-      gameboard = ["", "", "", "", "", "", "", "", ""];
-      displayGameboard();
-      currentPlayer = playerOne;
-    }, 2000);
+    result.textContent = "";
+    gameboard = ["", "", "", "", "", "", "", "", ""];
+    displayGameboard();
+    currentPlayer = playerOne;
   };
+
   const checkWinner = (() => {
     // x check
 
@@ -141,7 +150,6 @@ const Gameboard = (() => {
         gameboard[2] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[3] === "x" &&
@@ -149,7 +157,6 @@ const Gameboard = (() => {
         gameboard[5] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[6] === "x" &&
@@ -157,7 +164,6 @@ const Gameboard = (() => {
         gameboard[8] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       // Vertical wins
       if (
@@ -166,15 +172,13 @@ const Gameboard = (() => {
         gameboard[6] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[1] === "x" &&
         gameboard[4] === "x" &&
         gameboard[7] === "x"
       ) {
-       result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
+        result.textContent = `${playerOne.marker}, Player One is the Winner`;
       }
       if (
         gameboard[2] === "x" &&
@@ -182,7 +186,6 @@ const Gameboard = (() => {
         gameboard[8] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       // Diagonal wins
       if (
@@ -191,7 +194,6 @@ const Gameboard = (() => {
         gameboard[8] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[2] === "x" &&
@@ -199,7 +201,6 @@ const Gameboard = (() => {
         gameboard[6] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
-        resetGameboard();
       }
     };
     // O CHECK
@@ -212,7 +213,6 @@ const Gameboard = (() => {
         gameboard[2] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[3] === "o" &&
@@ -220,7 +220,6 @@ const Gameboard = (() => {
         gameboard[5] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[6] === "o" &&
@@ -228,7 +227,6 @@ const Gameboard = (() => {
         gameboard[8] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       // Vertical wins
       if (
@@ -237,7 +235,6 @@ const Gameboard = (() => {
         gameboard[6] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[1] === "o" &&
@@ -245,7 +242,6 @@ const Gameboard = (() => {
         gameboard[7] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[2] === "o" &&
@@ -253,7 +249,6 @@ const Gameboard = (() => {
         gameboard[8] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       // Diagonal wins
       if (
@@ -262,7 +257,6 @@ const Gameboard = (() => {
         gameboard[8] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
       if (
         gameboard[2] === "o" &&
@@ -270,7 +264,6 @@ const Gameboard = (() => {
         gameboard[6] === "o"
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
-        resetGameboard();
       }
     };
     const isTied = () => {
@@ -283,7 +276,6 @@ const Gameboard = (() => {
       });
       if (tieCheck.length == 0) {
         result.textContent = `It is a tie!`;
-        resetGameboard();
       }
     };
     return { hasXWon, hasOWon, isTied };
@@ -305,7 +297,7 @@ const Gameboard = (() => {
     checkWinner.isTied();
   };
 
-  return { playerOne, playerTwo, setMarker, displayGameboard, checkWinner };
+  return { playerOne, playerTwo, setMarker, displayGameboard, checkWinner, resetGameboard };
 })();
 
 const g = Gameboard.setMarker;
@@ -313,3 +305,6 @@ Gameboard.displayGameboard();
 // Gameboard.checkWinner.hasXWon();
 // Gameboard.checkWinner.hasOWon();
 // Gameboard.checkWinner.isTied();
+document.querySelector(".reset").addEventListener("click", () => {
+  Gameboard.resetGameboard();
+});
