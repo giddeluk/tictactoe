@@ -356,6 +356,8 @@ const Gameboard = (() => {
       });
       if (tieCheck.length == 0) {
         result.textContent = `It is a tie!`;
+        hasXWon();
+        hasOWon();
         disableGameboard();
       }
     };
