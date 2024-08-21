@@ -169,6 +169,11 @@ const Gameboard = (() => {
     gameDiv.appendChild(secondRow);
     gameDiv.appendChild(thirdRow);
   };
+  const changeBoxTextColor = (b1, b2, b3) => {
+    b1.style.color = "Red";
+    b2.style.color = "Red";
+    b3.style.color = "Red";
+  };
   const resetGameboard = () => {
     result.textContent = "";
     gameboard = ["", "", "", "", "", "", "", "", ""];
@@ -198,6 +203,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box2, box3);
       }
       if (
         gameboard[3] === "x" &&
@@ -206,6 +212,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box4, box5, box6);
       }
       if (
         gameboard[6] === "x" &&
@@ -214,6 +221,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box7, box8, box9);
       }
       // Vertical wins
       if (
@@ -223,6 +231,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box4, box7);
       }
       if (
         gameboard[1] === "x" &&
@@ -231,6 +240,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box2, box5, box8);
       }
       if (
         gameboard[2] === "x" &&
@@ -239,6 +249,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box3, box6, box9);
       }
       // Diagonal wins
       if (
@@ -247,6 +258,8 @@ const Gameboard = (() => {
         gameboard[8] === "x"
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        disableGameboard();
+        changeBoxTextColor(box1, box5, box9);
       }
       if (
         gameboard[2] === "x" &&
@@ -255,6 +268,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box3, box5, box7);
       }
     };
     // O CHECK
@@ -268,6 +282,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box2, box3);
       }
       if (
         gameboard[3] === "o" &&
@@ -276,6 +291,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box4, box5, box6);
       }
       if (
         gameboard[6] === "o" &&
@@ -284,6 +300,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box7, box8, box9);
       }
       // Vertical wins
       if (
@@ -293,6 +310,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box4, box7);
       }
       if (
         gameboard[1] === "o" &&
@@ -301,6 +319,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box2, box5, box8);
       }
       if (
         gameboard[2] === "o" &&
@@ -309,6 +328,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box3, box6, box9);
       }
       // Diagonal wins
       // X
@@ -319,6 +339,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box5, box9);
       }
       if (
         gameboard[2] === "x" &&
@@ -327,6 +348,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerOne.marker}, Player One is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box3, box5, box7);
       }
       // O
       if (
@@ -336,6 +358,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box1, box5, box9);
       }
       if (
         gameboard[2] === "o" &&
@@ -344,6 +367,7 @@ const Gameboard = (() => {
       ) {
         result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
         disableGameboard();
+        changeBoxTextColor(box3, box5, box7);
       }
     };
     const isTied = () => {
