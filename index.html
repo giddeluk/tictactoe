@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <dialog id="newGameDialog">
+      <form id="form">
+        <label for="playerOneName">Player One:</label>
+        <input id="playerOneName" type="text" placeholder="Mark" required/>
+        <label for="playerTwoName">Player Two:</label>
+        <input id="playerTwoName" type="text" placeholder="Jason" required/>
+        <button id="dialogSubmitButton">Start Game</button>
+      </form>
+      <button id="dialogCloseButton">Close</button>
+
+    </dialog>
     <div class="main">
       <div class="gameDiv">
         <!-- <div class="row rowOne">
@@ -27,6 +38,7 @@
       </div>
     </div>
     <button class="reset">RESET</button>
+    <button class="startNewGame">Start a NEW Game</button>
 
     <div class="resultDiv">
       <b>

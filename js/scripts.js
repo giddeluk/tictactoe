@@ -1,5 +1,13 @@
 const Gameboard = (() => {
   // Initialize Tic Tac Toe DOM Elements
+  const gameDialog = document.querySelector("#newGameDialog");
+  const playerOneNameInput = document.querySelector("#playerOneName");
+  const playerTwoNameInput = document.querySelector("#playerTwoName");
+  const dialogSubmitButton = document.querySelector("#dialogSubmitButton");
+  const dialogCloseButton = document.querySelector("#dialogCloseButton");
+
+  const resetGameboardButton = document.querySelector(".reset");
+  const startNewGameButton = document.querySelector(".startNewGame");
   const gameDiv = document.querySelector(".gameDiv");
   const result = document.querySelector(".result");
 
@@ -13,14 +21,55 @@ const Gameboard = (() => {
   let box8;
   let box9;
 
-  // Initialize Player One
+  // DOM Functions
+  // Reset Gameboard button
+  resetGameboardButton.addEventListener("click", () => {
+    Gameboard.resetGameboard();
+  });
+  //  Open modal
+  startNewGameButton.addEventListener("click", () => {
+    Gameboard.dialog("open");
+  });
+  // Close modal
+  dialogCloseButton.addEventListener("click", () => {
+    Gameboard.dialog("close");
+  });
+  // Submit Names
+  dialogSubmitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (playerOneNameInput.value != "") {
+      playerOne.name = playerOneNameInput.value;
+    }
+    if (playerTwoNameInput.value != "") {
+      playerTwo.name = playerTwoNameInput.value;
+    }
+    console.log(playerOne);
+    console.log(playerTwo);
+    Gameboard.dialog("close");
+    Gameboard.displayGameboard();
+  });
+
+  // Initialize Players
   const playerOne = {
     marker: "x",
+    name: "Player 1",
   };
 
   const playerTwo = {
     marker: "o",
+    name: "Player 2",
   };
+  // Dialog functions
+  const dialog = (event) => {
+    switch (event) {
+      case "open":
+        gameDialog.showModal();
+        break;
+      case "close":
+        gameDialog.close();
+    }
+  };
+  // Gameboard functions
   const setMarker = (position) => {
     if (gameboard[position] === "") {
       gameboard[position] = currentPlayer.marker;
@@ -393,17 +442,10 @@ const Gameboard = (() => {
   return {
     playerOne,
     playerTwo,
-    setMarker,
     displayGameboard,
-    checkWinner,
     resetGameboard,
-    box8,
+    dialog,
   };
 })();
 
-const g = Gameboard.setMarker;
-Gameboard.displayGameboard();
-
-document.querySelector(".reset").addEventListener("click", () => {
-  Gameboard.resetGameboard();
-});
+// Gameboard.displayGameboard();
