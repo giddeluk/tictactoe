@@ -1,16 +1,33 @@
 const Gameboard = (() => {
   // Initialize Tic Tac Toe DOM Elements
+  // Start Game dialog elements
   const gameDialog = document.querySelector("#newGameDialog");
   const playerOneNameInput = document.querySelector("#playerOneName");
   const playerTwoNameInput = document.querySelector("#playerTwoName");
   const dialogSubmitButton = document.querySelector("#dialogSubmitButton");
   const dialogCloseButton = document.querySelector("#dialogCloseButton");
 
+  // Other DOM Elements
   const resetGameboardButton = document.querySelector(".reset");
   const startNewGameButton = document.querySelector(".startNewGame");
   const gameDiv = document.querySelector(".gameDiv");
   const result = document.querySelector(".result");
 
+  // Scores div elements
+  // Player 1
+  const playerOneScoreDiv = document.querySelector("#playerOneScoreDiv");
+  const playerOneName = document.querySelector("#playerOneName");
+  const playerOneScore = document.querySelector("#playerOneScore");
+  // Tie
+  const tieScoreDiv = document.querySelector("#tieScoreDiv");
+  const tieName = document.querySelector("#tieName");
+  const tieScore = document.querySelector("#tieScore");
+  // Player 2
+  const playerTwoScoreDiv = document.querySelector("#playerTwoScoreDiv");
+  const playerTwoName = document.querySelector("#playerTwoName");
+  const playerTwoScore = document.querySelector("#playerTwoScore");
+  
+  // Created Tic tac toe boxes
   let box1;
   let box2;
   let box3;
@@ -26,11 +43,11 @@ const Gameboard = (() => {
   resetGameboardButton.addEventListener("click", () => {
     Gameboard.resetGameboard();
   });
-  //  Open modal
+  //  Open start game modal
   startNewGameButton.addEventListener("click", () => {
     Gameboard.dialog("open");
   });
-  // Close modal
+  // Close start game modal
   dialogCloseButton.addEventListener("click", () => {
     Gameboard.dialog("close");
   });
@@ -43,12 +60,13 @@ const Gameboard = (() => {
     if (playerTwoNameInput.value != "") {
       playerTwo.name = playerTwoNameInput.value;
     }
-    console.log(playerOne);
-    console.log(playerTwo);
-    Gameboard.dialog("close");
-    Gameboard.displayGameboard();
+    dialog("close");
+    resetGameboard();
+    displayGameboard();
   });
 
+  // Remove the Reset button when a player first loads the page
+  resetGameboardButton.style.display = "none";
   // Initialize Players
   const playerOne = {
     marker: "x",
@@ -59,7 +77,7 @@ const Gameboard = (() => {
     marker: "o",
     name: "Player 2",
   };
-  // Dialog functions
+  // Start new game Dialog functions
   const dialog = (event) => {
     switch (event) {
       case "open":
@@ -79,6 +97,9 @@ const Gameboard = (() => {
         currentPlayer = playerOne;
       }
     }
+    // Display each player's turn on the UI
+    result.textContent = `${currentPlayer.name}'s turn!`;
+
     displayGameboard();
     checkWinner.hasXWon();
     checkWinner.hasOWon();
@@ -124,7 +145,12 @@ const Gameboard = (() => {
       setMarkerNine,
     };
   })();
-
+  const concludeGame = () => {
+    // Display the New game button
+    startNewGameButton.style.display = "block";
+    // Show the reset/next round button
+    resetGameboardButton.style.display = "block";
+  };
   const displayGameboard = () => {
     gameDiv.innerHTML = "";
     // 1st row
@@ -217,6 +243,12 @@ const Gameboard = (() => {
     gameDiv.appendChild(firstRow);
     gameDiv.appendChild(secondRow);
     gameDiv.appendChild(thirdRow);
+    // Display the first player's turn, immediately the game starts
+    result.textContent = `${currentPlayer.name}'s turn!`;
+    // Remove the Start New Game button when a player starts a game
+    startNewGameButton.style.display = "none";
+    // Remove the Reset button when a player starts a game
+    resetGameboardButton.style.display = "none";
   };
   const changeBoxTextColor = (b1, b2, b3) => {
     b1.style.color = "Red";
@@ -226,8 +258,17 @@ const Gameboard = (() => {
   const resetGameboard = () => {
     result.textContent = "";
     gameboard = ["", "", "", "", "", "", "", "", ""];
+    // Ensures the opposite player starts every new game
+    switch (startingPlayer) {
+      case playerOne:
+        startingPlayer = playerTwo;
+        currentPlayer = playerTwo;
+        break;
+      case playerTwo:
+        startingPlayer = playerOne;
+        currentPlayer = playerOne;
+    }
     displayGameboard();
-    currentPlayer = playerOne;
   };
   const disableGameboard = () => {
     box1.removeEventListener("click", placeMarkerOnUI.setMarkerOne);
@@ -250,27 +291,30 @@ const Gameboard = (() => {
         gameboard[1] === "x" &&
         gameboard[2] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box2, box3);
+        concludeGame();
       }
       if (
         gameboard[3] === "x" &&
         gameboard[4] === "x" &&
         gameboard[5] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box4, box5, box6);
+        concludeGame();
       }
       if (
         gameboard[6] === "x" &&
         gameboard[7] === "x" &&
         gameboard[8] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box7, box8, box9);
+        concludeGame();
       }
       // Vertical wins
       if (
@@ -278,27 +322,30 @@ const Gameboard = (() => {
         gameboard[3] === "x" &&
         gameboard[6] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box4, box7);
+        concludeGame();
       }
       if (
         gameboard[1] === "x" &&
         gameboard[4] === "x" &&
         gameboard[7] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box2, box5, box8);
+        concludeGame();
       }
       if (
         gameboard[2] === "x" &&
         gameboard[5] === "x" &&
         gameboard[8] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box6, box9);
+        concludeGame();
       }
       // Diagonal wins
       if (
@@ -306,18 +353,20 @@ const Gameboard = (() => {
         gameboard[4] === "x" &&
         gameboard[8] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        concludeGame();
       }
       if (
         gameboard[2] === "x" &&
         gameboard[4] === "x" &&
         gameboard[6] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        concludeGame();
       }
     };
     // O CHECK
@@ -329,27 +378,30 @@ const Gameboard = (() => {
         gameboard[1] === "o" &&
         gameboard[2] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box2, box3);
+        concludeGame();
       }
       if (
         gameboard[3] === "o" &&
         gameboard[4] === "o" &&
         gameboard[5] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box4, box5, box6);
+        concludeGame();
       }
       if (
         gameboard[6] === "o" &&
         gameboard[7] === "o" &&
         gameboard[8] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box7, box8, box9);
+        concludeGame();
       }
       // Vertical wins
       if (
@@ -357,27 +409,30 @@ const Gameboard = (() => {
         gameboard[3] === "o" &&
         gameboard[6] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box4, box7);
+        concludeGame();
       }
       if (
         gameboard[1] === "o" &&
         gameboard[4] === "o" &&
         gameboard[7] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box2, box5, box8);
+        concludeGame();
       }
       if (
         gameboard[2] === "o" &&
         gameboard[5] === "o" &&
         gameboard[8] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box6, box9);
+        concludeGame();
       }
       // Diagonal wins
       // X
@@ -386,18 +441,20 @@ const Gameboard = (() => {
         gameboard[4] === "x" &&
         gameboard[8] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        concludeGame();
       }
       if (
         gameboard[2] === "x" &&
         gameboard[4] === "x" &&
         gameboard[6] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, Player One is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        concludeGame();
       }
       // O
       if (
@@ -405,18 +462,20 @@ const Gameboard = (() => {
         gameboard[4] === "o" &&
         gameboard[8] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        concludeGame();
       }
       if (
         gameboard[2] === "o" &&
         gameboard[4] === "o" &&
         gameboard[6] === "o"
       ) {
-        result.textContent = `${playerTwo.marker}, Player Two is the Winner`;
+        result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        concludeGame();
       }
     };
     const isTied = () => {
@@ -432,10 +491,12 @@ const Gameboard = (() => {
         hasXWon();
         hasOWon();
         disableGameboard();
+        concludeGame();
       }
     };
     return { hasXWon, hasOWon, isTied };
   })();
+  let startingPlayer = playerOne;
   let currentPlayer = playerOne;
   let gameboard = ["", "", "", "", "", "", "", "", ""];
 

@@ -60,3 +60,47 @@
   margin-left: 30%;
   margin-top: 2%;
 }
+
+/* Scores */
+.scores {
+  display: flex;
+}
+/* Player one div */
+#playerOneScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#playerOneName {
+  color: black;
+}
+#playerOneScore {
+  color: black;
+  font-size: 150%;
+}
+/* Tie div */
+#tieScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#tieName {
+  color: black;
+}
+#tieScore {
+  color: black;
+  font-size: 150%;
+}
+/*  */
+#playerTwoScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#playerTwoName {
+  color: black;
+}
+#playerTwoScore {
+  color: black;
+  font-size: 150%;
+}
