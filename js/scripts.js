@@ -15,17 +15,14 @@ const Gameboard = (() => {
 
   // Scores div elements
   // Player 1
-  const playerOneScoreDiv = document.querySelector("#playerOneScoreDiv");
-  const playerOneName = document.querySelector("#playerOneName");
-  const playerOneScore = document.querySelector("#playerOneScore");
+  const playerOneName = document.querySelector(".playerOneName");
+  const playerOneScore = document.querySelector(".playerOneScore");
   // Tie
-  const tieScoreDiv = document.querySelector("#tieScoreDiv");
-  const tieName = document.querySelector("#tieName");
-  const tieScore = document.querySelector("#tieScore");
+  const tieName = document.querySelector(".tieName");
+  const tieScore = document.querySelector(".tieScore");
   // Player 2
-  const playerTwoScoreDiv = document.querySelector("#playerTwoScoreDiv");
-  const playerTwoName = document.querySelector("#playerTwoName");
-  const playerTwoScore = document.querySelector("#playerTwoScore");
+  const playerTwoName = document.querySelector(".playerTwoName");
+  const playerTwoScore = document.querySelector(".playerTwoScore");
 
   // Created Tic tac toe boxes
   let box1;
@@ -46,9 +43,6 @@ const Gameboard = (() => {
   //  Open start game modal
   startNewGameButton.addEventListener("click", () => {
     dialog("open");
-    // // Display each Player's name on the scoreboard
-    // playerOneName.textContent = playerOne.name;
-    // playerTwoName.textContent = playerTwo.name;
   });
   // Close start game modal
   dialogCloseButton.addEventListener("click", () => {
@@ -66,11 +60,17 @@ const Gameboard = (() => {
     dialog("close");
     resetGameboard();
     displayGameboard();
-
+    // // Display each Player's name on the scoreboard
+    playerOneName.textContent = playerOne.name;
+    playerTwoName.textContent = playerTwo.name;
+    // Show the scoreboard
+    document.querySelector(".scores").style.display = "";
   });
 
   // Remove the Reset button when a player first loads the page
   resetGameboardButton.style.display = "none";
+  // Remove the scoreboard when the page is first loaded
+  document.querySelector(".scores").style.display = "none";
   // Initialize Players
   const playerOne = {
     marker: "x",
@@ -96,6 +96,7 @@ const Gameboard = (() => {
           break;
         case "ties":
           tieNumScore += pointsToBeIncreasedBy;
+          break;
       }
     };
     const displayScores = () => {
@@ -390,31 +391,6 @@ const Gameboard = (() => {
         scores.displayScores();
         concludeGame();
       }
-      // Diagonal wins
-      if (
-        gameboard[0] === "x" &&
-        gameboard[4] === "x" &&
-        gameboard[8] === "x"
-      ) {
-        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
-        disableGameboard();
-        changeBoxTextColor(box1, box5, box9);
-        scores.increaseScore("playerOne", 1);
-        scores.displayScores();
-        concludeGame();
-      }
-      if (
-        gameboard[2] === "x" &&
-        gameboard[4] === "x" &&
-        gameboard[6] === "x"
-      ) {
-        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
-        disableGameboard();
-        changeBoxTextColor(box3, box5, box7);
-        scores.increaseScore("playerOne", 1);
-        scores.displayScores();
-        concludeGame();
-      }
     };
     // O CHECK
 
@@ -500,10 +476,10 @@ const Gameboard = (() => {
         gameboard[4] === "x" &&
         gameboard[8] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
-        scores.increaseScore("playerTwo", 1);
+        scores.increaseScore("playerOne", 1);
         scores.displayScores();
         concludeGame();
       }
@@ -512,10 +488,10 @@ const Gameboard = (() => {
         gameboard[4] === "x" &&
         gameboard[6] === "x"
       ) {
-        result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
+        result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
-        scores.increaseScore("playerTwo", 1);
+        scores.increaseScore("playerOne", 1);
         scores.displayScores();
         concludeGame();
       }
@@ -574,7 +550,7 @@ const Gameboard = (() => {
     playerTwo,
     displayGameboard,
     resetGameboard,
-    dialog,
+    dialog
   };
 })();
 
