@@ -26,7 +26,7 @@ const Gameboard = (() => {
   const playerTwoScoreDiv = document.querySelector("#playerTwoScoreDiv");
   const playerTwoName = document.querySelector("#playerTwoName");
   const playerTwoScore = document.querySelector("#playerTwoScore");
-  
+
   // Created Tic tac toe boxes
   let box1;
   let box2;
@@ -45,11 +45,14 @@ const Gameboard = (() => {
   });
   //  Open start game modal
   startNewGameButton.addEventListener("click", () => {
-    Gameboard.dialog("open");
+    dialog("open");
+    // // Display each Player's name on the scoreboard
+    // playerOneName.textContent = playerOne.name;
+    // playerTwoName.textContent = playerTwo.name;
   });
   // Close start game modal
   dialogCloseButton.addEventListener("click", () => {
-    Gameboard.dialog("close");
+    dialog("close");
   });
   // Submit Names
   dialogSubmitButton.addEventListener("click", (e) => {
@@ -63,6 +66,7 @@ const Gameboard = (() => {
     dialog("close");
     resetGameboard();
     displayGameboard();
+
   });
 
   // Remove the Reset button when a player first loads the page
@@ -77,6 +81,33 @@ const Gameboard = (() => {
     marker: "o",
     name: "Player 2",
   };
+  // Scores Object
+  const scores = (() => {
+    let playerOneNumScore = 0;
+    let playerTwoNumScore = 0;
+    let tieNumScore = 0;
+    const increaseScore = (scoreToBeIncreased, pointsToBeIncreasedBy) => {
+      switch (scoreToBeIncreased) {
+        case "playerOne":
+          playerOneNumScore += pointsToBeIncreasedBy;
+          break;
+        case "playerTwo":
+          playerTwoNumScore += pointsToBeIncreasedBy;
+          break;
+        case "ties":
+          tieNumScore += pointsToBeIncreasedBy;
+      }
+    };
+    const displayScores = () => {
+      // Player One output
+      playerOneScore.textContent = playerOneNumScore;
+      // Player Two Output
+      playerTwoScore.textContent = playerTwoNumScore;
+      // Tie score output
+      tieScore.textContent = tieNumScore;
+    };
+    return { increaseScore, displayScores };
+  })();
   // Start new game Dialog functions
   const dialog = (event) => {
     switch (event) {
@@ -294,6 +325,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box2, box3);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -304,6 +337,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box4, box5, box6);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -314,6 +349,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box7, box8, box9);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       // Vertical wins
@@ -325,6 +362,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box4, box7);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -335,6 +374,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box2, box5, box8);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -345,6 +386,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box6, box9);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       // Diagonal wins
@@ -356,6 +399,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -366,6 +411,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerOne.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        scores.increaseScore("playerOne", 1);
+        scores.displayScores();
         concludeGame();
       }
     };
@@ -381,6 +428,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box2, box3);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -391,6 +440,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box4, box5, box6);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -401,6 +452,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box7, box8, box9);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       // Vertical wins
@@ -412,6 +465,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box4, box7);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -422,6 +477,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box2, box5, box8);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -432,6 +489,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box6, box9);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       // Diagonal wins
@@ -444,6 +503,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -454,6 +515,8 @@ const Gameboard = (() => {
         result.textContent = `${playerOne.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       // O
@@ -465,6 +528,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box1, box5, box9);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
       if (
@@ -475,6 +540,8 @@ const Gameboard = (() => {
         result.textContent = `${playerTwo.marker}, ${playerTwo.name} is the Winner`;
         disableGameboard();
         changeBoxTextColor(box3, box5, box7);
+        scores.increaseScore("playerTwo", 1);
+        scores.displayScores();
         concludeGame();
       }
     };
@@ -491,6 +558,8 @@ const Gameboard = (() => {
         hasXWon();
         hasOWon();
         disableGameboard();
+        scores.increaseScore("ties", 1);
+        scores.displayScores();
         concludeGame();
       }
     };
