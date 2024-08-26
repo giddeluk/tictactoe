@@ -53,20 +53,16 @@ const Gameboard = (() => {
     e.preventDefault();
     if (playerOneNameInput.value != "") {
       playerOne.name = playerOneNameInput.value;
-    } else {
-      playerOne.name = "Player 1";
     }
     if (playerTwoNameInput.value != "") {
       playerTwo.name = playerTwoNameInput.value;
-    } else {
-      playerOne.name = "Player 2";
     }
     dialog("close");
     resetGameboard();
     displayGameboard();
     // // Display each Player's name on the scoreboard
-    playerOneName.textContent = playerOne.name;
-    playerTwoName.textContent = playerTwo.name;
+    playerOneName.textContent = `${playerOne.name}(${playerOne.marker})`;
+    playerTwoName.textContent = `${playerTwo.name}(${playerTwo.marker})`;
     // Show the scoreboard
     document.querySelector(".scores").style.display = "";
   });
