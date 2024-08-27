@@ -4,6 +4,16 @@
   box-sizing: border-box;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+:root {
+  --black: #0a0a0a;
+  --purple: #5046e5;
+  --grey: #a3a3a3;
+}
+/* Main code */
+body {
+  background-color: var(--black);
+}
+/* Boxes container */
 .main {
   display: flex;
   justify-content: center;
@@ -44,21 +54,33 @@
   width: 50px;
   height: 50px;
 }
+/* results container */
 .result {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   font-size: 150%;
 }
+/* Action buttons container */
+.actionButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .reset {
   width: 40%;
-  margin-left: 30%;
-  margin-top: 2%;
 }
 .startNewGame {
   width: 40%;
-  margin-left: 30%;
-  margin-top: 2%;
+  height: 5vh;
+  /* margin-top: 45vh;
+  margin-bottom: 45vh; */
+  background-color: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 102%;
+  font-weight: bold;
 }
 
 /* Scores */
@@ -91,7 +113,7 @@
   color: black;
   font-size: 150%;
 }
-/*  */
+/*Player 2 div*/
 #playerTwoScoreDiv {
   background-color: rgb(173, 164, 164);
   padding: 3px;
