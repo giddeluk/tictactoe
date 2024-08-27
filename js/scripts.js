@@ -44,6 +44,9 @@ const Gameboard = (() => {
   startNewGameButton.addEventListener("click", () => {
     dialog("open");
   });
+  document.querySelector(".newGame").addEventListener("click", (e) => {
+    dialog("open");
+  });
   // Close start game modal
   dialogCloseButton.addEventListener("click", () => {
     dialog("close");
@@ -65,6 +68,8 @@ const Gameboard = (() => {
     playerTwoName.textContent = `${playerTwo.name}(${playerTwo.marker})`;
     // Show the scoreboard
     document.querySelector(".scores").style.display = "";
+    document.querySelector(".main-ui").style.display = "none";
+
   });
 
   // Remove the Reset button when a player first loads the page
