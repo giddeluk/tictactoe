@@ -13,121 +13,13 @@
 body {
   background-color: var(--black);
 }
-/* Boxes container */
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.gameDiv {
+.mainElementDiv{
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-top: 2%;
-}
-/* Box rows */
-.rowOne {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.rowTwo {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.rowThree {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-/* Individual boxes */
-.box {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  background-color: #c9c9c9;
-  color: black;
-  font-weight: bolder;
-  font-size: 300%;
-  width: 50px;
-  height: 50px;
+  height: 100svh;
 }
-/* results container */
-.result {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  font-size: 150%;
-}
-/* Action buttons container */
-.actionButtons {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.reset {
-  width: 40%;
-}
-.startNewGame {
-  display: none;
-  width: 40%;
-  height: 5vh;
-  /* margin-top: 45vh;
-  margin-bottom: 45vh; */
-  background-color: var(--purple);
-  color: white;
-  border: none;
-  border-radius: 3px;
-  font-size: 102%;
-  font-weight: bold;
-}
-
-/* Scores */
-.scores {
-  display: flex;
-}
-/* Player one div */
-#playerOneScoreDiv {
-  background-color: rgb(173, 164, 164);
-  padding: 3px;
-  margin: 5px;
-}
-#playerOneName {
-  color: black;
-}
-#playerOneScore {
-  color: black;
-  font-size: 150%;
-}
-/* Tie div */
-#tieScoreDiv {
-  background-color: rgb(173, 164, 164);
-  padding: 3px;
-  margin: 5px;
-}
-#tieName {
-  color: black;
-}
-#tieScore {
-  color: black;
-  font-size: 150%;
-}
-/*Player 2 div*/
-#playerTwoScoreDiv {
-  background-color: rgb(173, 164, 164);
-  padding: 3px;
-  margin: 5px;
-}
-#playerTwoName {
-  color: black;
-}
-#playerTwoScore {
-  color: black;
-  font-size: 150%;
-}
-/* main ui */
+/* Front page ui */
 .main-ui {
   width: 100%;
   height: 100vh;
@@ -176,4 +68,125 @@ body {
 }
 .card *{
   padding: 5px;
+}
+
+/* Boxes container */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2%;
+}
+/* Box rows */
+.rowOne {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.rowTwo {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.rowThree {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+/* Individual boxes */
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #262626;
+  color: white;
+  font-weight: bolder;
+  font-size: 500%;
+  width: 13vh;
+  height: 13vh;
+}
+/* results container */
+.result {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 150%;
+  color: white;
+}
+/* Action buttons container */
+.actionButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.reset {
+  width: 40%;
+}
+.startNewGame {
+  display: none;
+  width: 40%;
+  height: 5vh;
+  /* margin-top: 45vh;
+  margin-bottom: 45vh; */
+  background-color: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 102%;
+  font-weight: bold;
+}
+
+/* Scores */
+.scores {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/* Player one div */
+#playerOneScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#playerOneName {
+  color: black;
+}
+#playerOneScore {
+  color: black;
+  font-size: 150%;
+}
+/* Tie div */
+#tieScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#tieName {
+  color: black;
+}
+#tieScore {
+  color: black;
+  font-size: 150%;
+}
+/*Player 2 div*/
+#playerTwoScoreDiv {
+  background-color: rgb(173, 164, 164);
+  padding: 3px;
+  margin: 5px;
+}
+#playerTwoName {
+  color: black;
+}
+#playerTwoScore {
+  color: black;
+  font-size: 150%;
 }

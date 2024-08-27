@@ -24,41 +24,43 @@
       <button id="resultDialogNextRoundButton">Next Round</button>
       <button id="resultDialogNewGameButton">Start a New Game</button>
     </dialog>
-    <div class="main">
-      <div class="gameDiv">
+    <!-- Main UI Elements -->
+    <div class="mainElementDiv">
+      <div class="main">
+        <div class="gameDiv"></div>
+      </div>
+            <div class="resultDiv">
+        <b>
+          <p class="result"></p>
+        </b>
+      </div>
+      <div class="actionButtons">
+        <button class="reset">Next Round</button>
+        <button class="startNewGame">Start a NEW Game</button>
+      </div>
+      <div class="main-ui">
+        <div class="card">
+          <p>Welcome to this TicTacToe game.</p>
+          <p>Click on the "Start a NEW Game" button to begin.</p>
+          <button class="newGame">Start a NEW Game</button>
+        </div>
+      </div>
 
-      </div>
-    </div>
-    <div class="actionButtons">
-      <button class="reset">Next Round</button>
-      <button class="startNewGame">Start a NEW Game</button>
-    </div>
-    <div class="main-ui">
-      <div class="card">
-        <p>Welcome to this TicTacToe game.</p>
-        <p>Click on the "Start a NEW Game" button to begin.</p>
-        <button class="newGame">Start a NEW Game</button>
-      </div>
-    </div>
 
-    <div class="resultDiv">
-      <b>
-        <p class="result"></p>
-      </b>
-    </div>
 
-    <div class="scores">
-      <div id="playerOneScoreDiv">
-        <p class="playerOneName">Player One</p>
-        <p class="playerOneScore">0</p>
-      </div>
-      <div id="tieScoreDiv">
-        <p class="tieName">Ties</p>
-        <p class="tieScore">0</p>
-      </div>
-      <div id="playerTwoScoreDiv">
-        <p class="playerTwoName">Player Two</p>
-        <p class="playerTwoScore">0</p>
+      <div class="scores">
+        <div id="playerOneScoreDiv">
+          <p class="playerOneName">Player One</p>
+          <p class="playerOneScore">0</p>
+        </div>
+        <div id="tieScoreDiv">
+          <p class="tieName">Ties</p>
+          <p class="tieScore">0</p>
+        </div>
+        <div id="playerTwoScoreDiv">
+          <p class="playerTwoName">Player Two</p>
+          <p class="playerTwoScore">0</p>
+        </div>
       </div>
     </div>
     <script src="js/scripts.js"></script>

@@ -68,8 +68,11 @@ const Gameboard = (() => {
     playerTwoName.textContent = `${playerTwo.name}(${playerTwo.marker})`;
     // Show the scoreboard
     document.querySelector(".scores").style.display = "";
+    // Hide the main start game div
     document.querySelector(".main-ui").style.display = "none";
-
+    // Reset the scoreboard
+    scores.resetScores();
+    scores.displayScores();
   });
 
   // Remove the Reset button when a player first loads the page
@@ -112,7 +115,12 @@ const Gameboard = (() => {
       // Tie score output
       tieScore.textContent = tieNumScore;
     };
-    return { increaseScore, displayScores };
+    const resetScores = () => {
+      playerOneNumScore = 0;
+      playerTwoNumScore = 0;
+      tieNumScore = 0;
+    };
+    return { increaseScore, displayScores, resetScores };
   })();
   // Start new game Dialog functions
   const dialog = (event) => {
@@ -288,9 +296,9 @@ const Gameboard = (() => {
     resetGameboardButton.style.display = "none";
   };
   const changeBoxTextColor = (b1, b2, b3) => {
-    b1.style.color = "Red";
-    b2.style.color = "Red";
-    b3.style.color = "Red";
+    b1.style.color = "#5046e5";
+    b2.style.color = "#5046e5";
+    b3.style.color = "#5046e5";
   };
   const resetGameboard = () => {
     result.textContent = "";
