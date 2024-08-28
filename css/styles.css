@@ -141,7 +141,7 @@ body {
   border-radius: 3px;
   font-size: 102%;
   font-weight: bold;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 .reset:hover {
   background-color: hsl(244, 75%, 63%);
@@ -157,6 +157,8 @@ body {
   font-size: 102%;
   font-weight: bold;
   margin-top: 6px;
+  margin-bottom: 10px;
+
 }
 .startNewGame:hover {
   background-color: hsl(0, 0%, 20%);
@@ -171,44 +173,67 @@ body {
 }
 /* Player one div */
 #playerOneScoreDiv {
-  width: min(15%, 200px);
-  background-color: rgb(173, 164, 164);
+  width: min(15%, 150px);
+  border: 2px solid #262626;
+  border-radius: 5px;
   padding: 3px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#playerOneName {
-  color: black;
+.playerOneName {
+  color: var(--purple);
+  text-align: center;
+  font-size: 90%;
 }
-#playerOneScore {
-  color: black;
-  font-size: 150%;
+.playerOneScore {
+  color: white;
+  font-size: 220%;
+  font-weight: bold;
 }
 /* Tie div */
 #tieScoreDiv {
-  width: min(15%, 200px);
-
-  background-color: rgb(173, 164, 164);
+  width: min(15%, 150px);
+  border: 2px solid #262626;
+  border-radius: 5px;
   padding: 3px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#tieName {
-  color: black;
+.tieName {
+  color: var(--purple);
+  text-align: center;
+  font-size: 90%;
 }
-#tieScore {
-  color: black;
-  font-size: 150%;
+.tieScore {
+  color: white;
+  font-size: 220%;
+  font-weight: bold;
 }
 /*Player 2 div*/
 #playerTwoScoreDiv {
-  width: min(15%, 200px);
-  background-color: rgb(173, 164, 164);
+  width: min(15%, 150px);
+  border: 2px solid #262626;
+  border-radius: 5px;
   padding: 3px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#playerTwoName {
-  color: black;
+.playerTwoName {
+  color: var(--purple);
+  text-align: center;
+  font-size: 90%;
 }
-#playerTwoScore {
-  color: black;
-  font-size: 150%;
+.playerTwoScore {
+  color: white;
+  font-size: 220%;
+  font-weight: bold;
 }
