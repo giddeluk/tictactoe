@@ -18,22 +18,25 @@
       </form>
       <button id="dialogCloseButton">Close</button>
     </dialog>
+
     <!-- Dialog Shown after a win or draw -->
     <dialog id="resultDialog">
       <p>This round is finished, what would you like to do?</p>
       <button id="resultDialogNextRoundButton">Next Round</button>
       <button id="resultDialogNewGameButton">Start a New Game</button>
     </dialog>
+
     <!-- Main UI Elements -->
     <div class="mainElementDiv">
-      <div class="main">
-        <div class="gameDiv"></div>
-      </div>
-            <div class="resultDiv">
+       <div class="resultDiv">
         <b>
           <p class="result"></p>
         </b>
       </div>
+      <div class="main">
+        <div class="gameDiv"></div>
+      </div>
+     
       <div class="actionButtons">
         <button class="reset">Next Round</button>
         <button class="startNewGame">Start a NEW Game</button>
@@ -45,8 +48,6 @@
           <button class="newGame">Start a NEW Game</button>
         </div>
       </div>
-
-
 
       <div class="scores">
         <div id="playerOneScoreDiv">
