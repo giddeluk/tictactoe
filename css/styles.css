@@ -28,7 +28,6 @@ body {
   align-items: center;
 }
 .card {
-  border: 1px solid var(--grey);
   padding: 15px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -158,7 +157,6 @@ body {
   font-weight: bold;
   margin-top: 6px;
   margin-bottom: 10px;
-
 }
 .startNewGame:hover {
   background-color: hsl(0, 0%, 20%);
@@ -236,4 +234,79 @@ body {
   color: white;
   font-size: 220%;
   font-weight: bold;
+}
+/* Dialog */
+#newGameDialog {
+  width: min(70%, 400px);
+  padding: 30px;
+  margin: auto;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--black);
+}
+#formContainer {
+  display: flex;
+  flex-direction: column;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+}
+#label1 {
+  color: var(--grey);
+  font-size: 80%;
+}
+#label2 {
+  color: var(--grey);
+  font-size: 80%;
+}
+#playerOneName {
+  padding: 5px;
+  background-color: var(--black);
+  border: 1px solid #262626;
+  border-radius: 3px;
+  color: white;
+  font-size: 105%;
+}
+#playerOneName:focus {
+  outline: 1px solid #5046e5;
+}
+#playerTwoName {
+  padding: 5px;
+  background-color: var(--black);
+  border: 1px solid #262626;
+  border-radius: 3px;
+  color: white;
+  font-size: 105%;
+}
+#playerTwoName:focus {
+  outline: 1px solid #5046e5;
+}
+#dialogSubmitButton {
+  width: 50%;
+  align-self: center;
+  margin-top: 1vh;
+  padding: 3px;
+  color: white;
+  background-color: var(--purple);
+  border: none;
+  border-radius: 3px;
+  font-size: 105%;
+}
+#dialogCloseButton {
+  align-self: center;
+  margin-top: 0.5vh;
+  padding: 5px;
+  color: white;
+  background-color: #262626;
+  border: none;
+  border-radius: 3px;
+  font-size: 105%;
+}
+/* Hover effects */
+#dialogSubmitButton:hover {
+  background-color: hsl(244, 75%, 63%);
+}
+#dialogCloseButton:hover {
+  background-color: hsl(0, 0%, 20%);
 }

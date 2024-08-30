@@ -9,21 +9,16 @@
   <body>
     <!-- New Game Dialog -->
     <dialog id="newGameDialog">
-      <form id="form">
-        <label for="playerOneName">Player One:</label>
-        <input id="playerOneName" type="text" placeholder="Mark" required />
-        <label for="playerTwoName">Player Two:</label>
-        <input id="playerTwoName" type="text" placeholder="Jason" required />
-        <button id="dialogSubmitButton">Start Game</button>
-      </form>
-      <button id="dialogCloseButton">Close</button>
-    </dialog>
-
-    <!-- Dialog Shown after a win or draw -->
-    <dialog id="resultDialog">
-      <p>This round is finished, what would you like to do?</p>
-      <button id="resultDialogNextRoundButton">Next Round</button>
-      <button id="resultDialogNewGameButton">Start a New Game</button>
+      <div id="formContainer">
+        <form id="form">
+          <label for="playerOneName" id="label1">Player One(X) Name:</label>
+          <input id="playerOneName" type="text" placeholder="Mark" required />
+          <label for="playerTwoName" id="label2">Player Two(O) Name:</label>
+          <input id="playerTwoName" type="text" placeholder="Jason" required />
+          <button id="dialogSubmitButton">Start Game</button>
+        </form>
+        <button id="dialogCloseButton">Close</button>
+      </div>
     </dialog>
 
     <!-- Main UI Elements -->
@@ -43,7 +38,7 @@
       </div>
       <div class="main-ui">
         <div class="card">
-          <p>Welcome to this TicTacToe game.</p>
+          <p>Welcome to my TicTacToe game.</p>
           <p>Click on the "Start a NEW Game" button to begin.</p>
           <button class="newGame">Start a NEW Game</button>
         </div>
