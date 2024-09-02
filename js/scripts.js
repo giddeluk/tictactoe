@@ -18,7 +18,6 @@ const Gameboard = (() => {
   const playerOneName = document.querySelector(".playerOneName");
   const playerOneScore = document.querySelector(".playerOneScore");
   // Tie
-  const tieName = document.querySelector(".tieName");
   const tieScore = document.querySelector(".tieScore");
   // Player 2
   const playerTwoName = document.querySelector(".playerTwoName");
@@ -758,6 +757,3 @@ const Gameboard = (() => {
     dialog,
   };
 })();
-
-// Gameboard.displayGameboard();
-// 1 4 2 3 5 7 6 8 9
