@@ -240,7 +240,7 @@ body {
   width: min(70%, 400px);
   padding: 30px;
   margin: auto;
-  border: none;
+  border: 1px solid hsl(0, 0%, 10%);
   border-radius: 3px;
   background-color: var(--black);
 }
@@ -302,6 +302,20 @@ body {
   border: none;
   border-radius: 3px;
   font-size: 105%;
+}
+#footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: var(--purple);
+  height: 4svh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#footer > p > a {
+  color: white;
 }
 /* Hover effects */
 #dialogSubmitButton:hover {
